@@ -6,18 +6,18 @@ export default function ChatMsg(props) {
 
     const {message, sender} = props;
     return (
-        <div class={sender === 'bot' ? 'bot' : 'user'}>
+        <div className={sender === 'bot' ? 'bot' : 'user'}>
             {sender === 'bot' && (
                 <img  src={robot} alt="robot" />
             )}
 
-            <span class='textarea'>
+            <span className='textarea'>
                 {message}
             </span>
 
             {sender === 'user' && (
-                <img  src={sasuke} alt="sasuke" 
-            />)}
+                <img  src={sasuke} alt="sasuke" />
+            )}
 
         </div>
     )

@@ -1,16 +1,35 @@
 import React from 'react'
 import '../css/inputbox.css'
 
-export default function Inputbox() {
+export default function Inputbox(props) {
+
+  const [inputValue, setInputValue] = React.useState('');
+
+  function handleInputChange(event) {
+    setInputValue(event.target.value);
+  }
+
+  function handleSendClick() {
+    if (inputValue.trim() === '') return;
+    props.setChatMessages([...props.chatMessages, {
+      message: inputValue,
+      sender: "user",
+      id: crypto.randomUUID()
+    }]);
+    setInputValue('');
+  }
+
   return (
     <>
-      <div class='inputbox'>
+      <div className='inputbox'>
         <input 
           id='input' 
           type="text" 
+          value={inputValue}
+          onChange={handleInputChange}
           placeholder="Send a message to Chatbot" 
         />
-        <button id='button'>Send</button>
+        <button onClick={handleSendClick} id='button'>Send</button>
       </div>
     </>
   )
