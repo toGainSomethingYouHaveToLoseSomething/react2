@@ -1,0 +1,7 @@
+.wbody{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    width: 700px;
+}
