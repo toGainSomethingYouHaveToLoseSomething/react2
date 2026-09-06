@@ -10,7 +10,16 @@ export default function Inputbox({chatMessages, setChatMessages}) {
     setInputValue(event.target.value);
   }
 
-  function handleSendClick() {
+  function handleEnter(event){
+    if(event.key==='Enter'){
+      handleSendClick()
+    }
+    if(event.key==='Escape'){
+      setInputValue('')
+    }
+  }
+
+  async function handleSendClick() {
     if (inputValue.trim() === '') return;
     const newChatMessages = [...chatMessages, {
       message: inputValue,
@@ -18,14 +27,26 @@ export default function Inputbox({chatMessages, setChatMessages}) {
       id: crypto.randomUUID()
     }]
     
-    setChatMessages(newChatMessages);
+    setChatMessages(newChatMessages)
 
-    const response =  Chatbot.getResponse(inputValue);
     setChatMessages([...newChatMessages, {
+      message: 'Loading....',
+      sender: "bot",
+      id: crypto.randomUUID()
+    }]);
+
+
+    const response = await Chatbot.getResponse(inputValue);
+
+    setTimeout(() => {
+      setChatMessages([...newChatMessages, {
       message: response,
       sender: "bot",
       id: crypto.randomUUID()
     }]);
+    }, 1000);
+
+    
 
     setInputValue('');
   }
@@ -39,6 +60,7 @@ export default function Inputbox({chatMessages, setChatMessages}) {
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Send a message to Chatbot" 
+          onKeyDown={handleEnter}
         />
         <button onClick={handleSendClick} id='button'>Send</button>
       </div>
