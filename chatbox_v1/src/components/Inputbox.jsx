@@ -1,7 +1,8 @@
 import React from 'react'
 import '../css/inputbox.css'
 
-export default function Inputbox(props) {
+
+export default function Inputbox({chatMessages, setChatMessages}) {
 
   const [inputValue, setInputValue] = React.useState('');
 
@@ -11,11 +12,21 @@ export default function Inputbox(props) {
 
   function handleSendClick() {
     if (inputValue.trim() === '') return;
-    props.setChatMessages([...props.chatMessages, {
+    const newChatMessages = [...chatMessages, {
       message: inputValue,
       sender: "user",
       id: crypto.randomUUID()
+    }]
+    
+    setChatMessages(newChatMessages);
+
+    const response =  Chatbot.getResponse(inputValue);
+    setChatMessages([...newChatMessages, {
+      message: response,
+      sender: "bot",
+      id: crypto.randomUUID()
     }]);
+
     setInputValue('');
   }
 
