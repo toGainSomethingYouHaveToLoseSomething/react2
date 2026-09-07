@@ -5,10 +5,11 @@
     align-items: center;
     gap: 10px;
     padding: 5px;
+    margin-bottom: 60px;
 }
 
 #input[type="text"]{
-    width: 600px;
+    flex-grow: 1;
     height: 50px;
     border-radius: 10px;
     border: 1px solid  #4fb663;

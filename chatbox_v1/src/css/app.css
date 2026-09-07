@@ -1,7 +1,15 @@
-.wbody{
+.app-container{
     display: flex;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    max-width: 700px;
+    height: 100vh;
 }
-.container{
-    width: 700px;
+
+.replybody-container{
+    flex-grow: 1;
+    margin-top: 10px;
+    overflow: scroll;
+    scrollbar-width: none;
 }

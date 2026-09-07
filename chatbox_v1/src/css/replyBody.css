@@ -1,0 +1,6 @@
+.replybody-container{
+    flex-grow: 1;
+    margin-top: 10px;
+    overflow: scroll;
+    scrollbar-width: none;
+}

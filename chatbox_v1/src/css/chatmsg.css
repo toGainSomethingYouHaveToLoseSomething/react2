@@ -2,7 +2,7 @@
     display: flex;
     justify-content: right;
     gap: 10px;
-    align-items: center;
+    align-items: top;
     padding: 10px 0px
 }
 
@@ -10,7 +10,7 @@
     display: flex;
     justify-content: left;
     gap: 10px;
-    align-items: center;
+    align-items: top;
     padding: 10px 0px
 }
 
@@ -26,4 +26,5 @@ img{
     border-radius: 10px;
     display:inline-block;
     border: 1px solid #8f928f;
+    max-width: 400px;
 }
