@@ -46,8 +46,6 @@ export default function Inputbox({chatMessages, setChatMessages}) {
     }]);
     }, 1000);
 
-    
-
     setInputValue('');
   }
 
